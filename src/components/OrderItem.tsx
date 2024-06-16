@@ -13,16 +13,23 @@ export default function OrderItem({ menu, deleteMenu }: OrderItemProps) {
         className="flex justify-between items-center border-t-2 py-3  last-of-type:border-b-2"
         key={menu.id}
       >
-        <div className="flex flex-col text-black gap-1">
-          <div className="flex justify-start items-center gap-2">
-            <div className="flex justify-start items-center gap-2">
-              <div>
-                <img src={`/svg/${menu.image}.svg`} alt={menu.image} />
+        <div className="flex flex-col text-black gap-2">
+          <div className="flex flex-col justify-start items-start gap-2">
+            <div className="flex flex-col justify-start items-start gap-2">
+              <div className="flex justify-start items-center gap-2">
+                <div>
+                  <img src={`/svg/${menu.image}.svg`} alt={menu.image} />
+                </div>
+                <p>{menu.name}</p>
               </div>
-              <p>{menu.name}</p>
+
+              <p className="font-medium">
+                Precio por unidad:{" "}
+                <span className="font-black">
+                  {currencyFormatter(menu.price)}
+                </span>
+              </p>
             </div>
-            <span>-</span>
-            <p className="font-black">{currencyFormatter(menu.price)}</p>
           </div>
           <div className="flex justify-start items-center gap-2 font-black">
             <p>
