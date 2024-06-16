@@ -21,9 +21,9 @@ function App() {
 
   return (
     <>
-      <header className="bg-teal-400">
+      <header className="bg-[#222831]">
         <div className="w-11/12 mx-auto py-5">
-          <h1 className="text-center text-4xl font-black">
+          <h1 className="text-center text-4xl font-black text-white">
             Calculadora de Propinas y Consumo
           </h1>
         </div>
@@ -65,7 +65,7 @@ function App() {
                 <div>
                   <button
                     type="button"
-                    className="text-white font-bold bg-black w-full py-3 uppercase text-sm"
+                    className="text-white font-bold bg-[#222831] w-full py-3 uppercase text-sm hover:bg-white hover:text-black hover:border-[#222831] border-2 md:duration-300"
                     onClick={destroyOrders}
                   >
                     Guardar orden

@@ -10,10 +10,15 @@ export default function MenuItem({ menu, addMenu }: MenuItemPorps) {
     <>
       <button
         type="button"
-        className="border-2 border-teal-400 flex justify-between items-center px-5 py-3 hover:bg-teal-200 md:duration-300"
+        className="border-2 border-[#76ABAE] flex justify-between items-center px-5 py-3 hover:bg-[#76ABAE] md:duration-300 hover:text-white"
         onClick={() => addMenu(menu)}
       >
-        <p>{menu.name}</p>
+        <div className="flex justify-start items-center gap-2">
+          <div>
+            <img src={`/svg/${menu.image}.svg`} alt={menu.image} />
+          </div>
+          <p>{menu.name}</p>
+        </div>
         <p className="font-black">${menu.price}</p>
       </button>
     </>

@@ -20,7 +20,7 @@ export default function Orders({ order }: OrdersProps) {
                 Hora: {dateFormatter(order.id)[1]}
               </p>
             </div>
-            <span className="transition group-open:rotate-180">
+            <span className="transition group-open:rotate-180 md:duration-500">
               <svg
                 width="18"
                 height="20"
@@ -38,7 +38,7 @@ export default function Orders({ order }: OrdersProps) {
               </svg>
             </span>
           </summary>
-          <div className="group-open:animate-fadeIn mt-3 text-neutral-600">
+          <div className="group-open:animate-fadeIn mt-3 text-neutral-600 font-medium">
             <div className="flex flex-col">
               {order.orders.map((item) => (
                 <OrderProcessed key={item.id} listOrderds={item} />

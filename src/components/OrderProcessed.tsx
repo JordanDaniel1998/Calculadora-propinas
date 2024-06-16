@@ -9,9 +9,18 @@ export default function OrderProcessed({ listOrderds }: OrderProcessedProps) {
   return (
     <>
       <div className="border-t-2 py-5">
-        <p>
-          Menú: <span className="font-bold text-black">{listOrderds.name}</span>
-        </p>
+        <div className="flex justify-start items-center gap-2">
+          <p>
+            Menú:{" "}
+            <span className="font-bold text-black">{listOrderds.name}</span>
+          </p>
+          <div>
+            <img
+              src={`/svg/${listOrderds.image}.svg`}
+              alt={listOrderds.image}
+            />
+          </div>
+        </div>
 
         <p>
           Precio por unidad:{" "}

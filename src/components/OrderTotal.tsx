@@ -10,11 +10,11 @@ export default function OrderTotal({ subTotal, tipAmount }: OrderTotalProps) {
     <>
       <div>
         <p>
-          Subtotal a pagar:
+          Subtotal a pagar:{" "}
           <span className="font-bold">{currencyFormatter(subTotal)}</span>
         </p>
         <p>
-          Propina:
+          Propina:{" "}
           <span className="font-bold">{currencyFormatter(tipAmount)}</span>
         </p>
         <p>
