@@ -1,6 +1,7 @@
 import MenuItem from "./components/MenuItem.tsx";
 import OrderItem from "./components/OrderItem.tsx";
 import OrderTotal from "./components/OrderTotal.tsx";
+import Orders from "./components/Orders.tsx";
 import TipItem from "./components/TipItem.tsx";
 import { menuItems } from "./data/db.ts";
 
@@ -11,6 +12,7 @@ function App() {
     cart,
     subTotal,
     tipAmount,
+    saveOrders,
     addMenu,
     deleteMenu,
     setTip,
@@ -38,7 +40,7 @@ function App() {
           </div>
         </div>
         <div>
-          <div className="border-2 border-gray-100 shadow-sm px-5 py-5">
+          <div className="border-2 border-gray-100 shadow-sm px-5 py-5 flex flex-col gap-10">
             {cart.length > 0 && (
               <div className="flex flex-col gap-10">
                 <h2 className="text-4xl font-black">Consumo</h2>
@@ -71,7 +73,21 @@ function App() {
                 </div>
               </div>
             )}
-            {cart.length === 0 && (
+
+            {saveOrders.length > 0 && (
+              <div className="relative ring-gray-900/5 rounded-lg">
+                <p className="text-4xl font-black pb-5">Historial de compras</p>
+                <div className="mx-auto">
+                  <div className="mx-auto grid divide-y divide-gray-700">
+                    {saveOrders.map((order) => (
+                      <Orders key={order.id} order={order} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {cart.length === 0 && saveOrders.length === 0 && (
               <p className="font-bold text-center">La orden esta vacía</p>
             )}
           </div>

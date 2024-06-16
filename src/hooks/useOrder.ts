@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
-import type { MenuItem, Menues } from "../types";
+import type { MenuItem, Menues, Order } from "../types";
 import { showDeleteConfirmation, showSuccessMessage } from "../helpers/alert";
 
 export default function useOrder() {
   const [cart, setCart] = useState<MenuItem[]>([]);
   const [tip, setTip] = useState(0);
+  const [saveOrders, setSaveOrders] = useState<Order[]>([]);
 
   let subTotal = useMemo(
     () => cart.reduce((total, item) => total + item.price * item.quantity, 0),
@@ -53,6 +54,10 @@ export default function useOrder() {
     };
     showDeleteConfirmation({ messages }).then((result) => {
       if (result.isConfirmed) {
+        /* ---- */
+        const orderProcessed = { id: new Date().getTime(), orders: [...cart] };
+        setSaveOrders([...saveOrders, orderProcessed]);
+        /* --- */
         setCart([]);
         setTip(0);
         subTotal = 0;
@@ -67,6 +72,7 @@ export default function useOrder() {
     subTotal,
     tip,
     tipAmount,
+    saveOrders,
     addMenu,
     deleteMenu,
     setTip,
