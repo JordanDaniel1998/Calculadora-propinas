@@ -1,11 +1,20 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { MenuItem, Menues, Order } from "../types";
 import { showDeleteConfirmation, showSuccessMessage } from "../helpers/alert";
 
 export default function useOrder() {
+  const initialOrders = (): Order[] => {
+    const localStorageProducts = localStorage.getItem("orders");
+    return localStorageProducts ? JSON.parse(localStorageProducts) : [];
+  };
+
   const [cart, setCart] = useState<MenuItem[]>([]);
   const [tip, setTip] = useState(0);
-  const [saveOrders, setSaveOrders] = useState<Order[]>([]);
+  const [saveOrders, setSaveOrders] = useState<Order[]>(initialOrders);
+
+  useEffect(() => {
+    localStorage.setItem("orders", JSON.stringify(saveOrders));
+  }, [saveOrders]);
 
   let subTotal = useMemo(
     () => cart.reduce((total, item) => total + item.price * item.quantity, 0),
